@@ -1,0 +1,27 @@
+{
+  "name": "krisp",
+  "authors": [
+    "San Emmanuel James <sanemmanueljames@gmail.com>"
+  ],
+  "description": "Kwazulu Natal Research and Innovation Sequencing Project",
+  "main": "",
+  "keywords": [
+    "KRISP"
+  ],
+  "license": "MIT",
+  "homepage": "krisp.org.za",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-3.3.1.min": "https://code.jquery.com/jquery-3.3.1.min.js",
+    "jquery-typeahead": "^2.10.4",
+    "bootstrap": "v4.0.0-alpha.6",
+	"bootstrap3-typeahead": "git://github.com/bassjobsen/Bootstrap-3-Typeahead.git#master"
+  }
+}

@@ -1,0 +1,177 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+/*=========================
+  Icons
+ ================= */
+
+/* footer social icons */
+ul.social-network {
+	list-style: none;
+	display: inline;
+	margin-left:0 !important;
+	padding: 0;
+}
+ul.social-network li {
+	display: inline;
+	margin: 0 5px;
+}
+
+
+/* footer social icons */
+.social-network a.icoYouTube:hover {
+	background-color: #BD3518;
+}
+.social-network a.icoFacebook:hover {
+	background-color:#3B5998;
+}
+.social-network a.icoTwitter:hover {
+	background-color:#33ccff;
+}
+.social-network a.icoGoogle:hover {
+	background-color:#BD3518;
+}
+.social-network a.icoVimeo:hover {
+	background-color:#0590B8;
+}
+.social-network a.icoLinkedin:hover {
+	background-color:#007bb7;
+}
+.social-network a.icoYouTube:hover i, .social-network a.icoFacebook:hover i, .social-network a.icoTwitter:hover i,
+.social-network a.icoGoogle:hover i, .social-network a.icoVimeo:hover i, .social-network a.icoLinkedin:hover i {
+	color:#fff;
+}
+a.socialIcon:hover, .socialHoverClass {
+	color:#44BCDD;
+}
+
+.social-circle li a {
+	display:inline-block;
+	position:relative;
+	margin:0 auto 0 auto;
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%;
+	border-radius:50%;
+	text-align:center;
+	width: 50px;
+	height: 50px;
+	font-size:20px;
+	background-color: #000;
+}
+.social-circle li i {
+	margin:0;
+	line-height:50px;
+	text-align: center;
+}
+
+.social-circle li a:hover i, .triggeredHover {
+	-moz-transform: rotate(360deg);
+	-webkit-transform: rotate(360deg);
+	-ms--transform: rotate(360deg);
+	transform: rotate(360deg);
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	-ms-transition: all 0.2s;
+	transition: all 0.2s;
+}
+.social-circle i {
+	color: #fff;
+	-webkit-transition: all 0.8s;
+	-moz-transition: all 0.8s;
+	-o-transition: all 0.8s;
+	-ms-transition: all 0.8s;
+	transition: all 0.8s;
+}
+
+a {
+ background-color: #FFFFFF;   
+}
+A.white
+{
+color: #ffffff;
+text-decoration: none
+}
+
+A.white:hover
+{
+color: #000000;
+text-decoration: underline
+}
+
+@media screen and (max-width: 600px) {
+  .divhideresponsive {
+    visibility: hidden;
+    clear: both;
+    display: none;
+  }
+}
+.navbar-bottom{
+	background-color: #eee;
+}
+.embed-container { 
+	position: relative; 
+	padding-bottom: 28.25%; 
+	height: 0; 
+	overflow: hidden; 
+	max-width: 100%;
+	max-height: 100%;
+}
+.embed-container iframe, .embed-container object, .embed-container embed { 
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	width: 100%; 
+	height: 100%;
+}
+.footer{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #C0C0C0;
+	color: black;
+}
+
+.footer a{
+	background-color: transparent;
+}
+
+.heading{
+	background-color: #000;
+	color: #FFF;
+}
+
+#keep the clear button hidden on document load
+.searchclear {
+	display: none;   
+   }
+
+#Set modal backdrop opacity
+#tools-modal .fade.in {
+	opacity: 1;
+	}
+#tools-modal .modal-backdrop.fade {
+	opacity: 0;
+	filter: alpha(opacity=0);
+	}
+#tools-modal	.modal-backdrop.fade.in {
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	}
+.modal-backdrop{
+	background: rgba(54, 25, 25, .5)
+}
+
+.modal-dialog{
+	background-color: #FFF;
+}
+
+.panel {
+	margin-left: -15px;
+	margin-right: 15px;
+}
