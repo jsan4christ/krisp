@@ -16,20 +16,25 @@ $(document).ready(function(){
         }).done(function(data){
             
             obj = JSON.parse(data);
+            console.log(data);
+            /** **/
             $('#tool-details').hide();
             $('#tool-details').show();
             $('#tool-details').modal('toggle');
-            $('#sw_id').html(obj[0].sw_id);
-            $('#sw_name').html(obj[0].sw_name);
-            $link = 'Url: <a href='+obj[0].sw_url+' targe="_blank">'+obj[0].sw_url+'</a>';
+            $('#sw_id').html(obj.sw_id);
+            $('#sw_name').html(obj.sw_name);
+            $link = 'Url: <a href='+obj.sw_url+' targe="_blank">'+obj.sw_url+'</a>';
             $('#sw_url').html($link);
-            $('#sw_cat').html(obj[0].cat_name+'/'+obj[0].subcat_name);
-            $('#date_of_instn').html("Installed on: "+obj[0].install_date);
-            $('#install_locn').html("Location: " + obj[0].install_locn);
-            $('#access_info').html(obj[0].instns_to_req_acc);
-            $('#server').html("Server: "+ obj[0].svr_name + "("+ obj[0].svr_addr +")" );
-            $('#sw_desc').html(obj[0].sw_desc);
+            $('#sw_cat').html(obj.cat_name +'/'+ obj.subcat_name);
+            $('#date_of_instn').html("Installed on: "+obj.install_date);
+            /*$('#install_locn').html("Location: " + obj.install_locn);*/
+            $('#access_info').html(obj.instns_to_req_acc);
+            $('#server').html(obj.svr_name);
+            $('#sw_desc').html(obj.sw_desc);
+            $('#sw_expert').html(obj.name);
+            $('#cmds_names').html(obj.cmd_name);
             $('#tool_data-loader').hide();
+            /**/
         })
         .fail(function(){
             

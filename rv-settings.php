@@ -27,19 +27,11 @@ $googleAnalyticsTrackerID = "UA-4841045-1";
 
 if(isset($_POST['cat_name']) && !empty($_POST['cat_name'])){
   $cat = $_POST['cat_name'];
-  var_dump($cat);
 } 
 else {
-  $cat = 'Sequence Analysis';
+  $cat = 'Blast';
 }
-/*if(isset($_GET['cat_name']) && !empty($_GET['cat_name'])){
-    $cat = $_GET('cat_name');
-    var_dump($cat);die;
-} 
-else {
-    $cat = 'Sequence Analysis';
-}
-*/
+
 function spacer($width = 1, $height = 1) {
   global $empty;
   
@@ -113,30 +105,20 @@ function openDocument($title) {
       echo('');
     }
     
-    function cat_menu($conexion){
-      $sql = "SELECT DISTINCT cat_name FROM b_sw_cats";
+    function software_cat_menu($conexion){
+      $sql = "SELECT DISTINCT cat_name FROM b_sw_cat";
       $stmt = $conexion->executeSQL($sql);
       if ($stmt->rowCount()){
         $cats = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        foreach($cats as $cat){
-          echo '<li  class="" style=""> <a href="javascript:void(0);" class="tools-link cat_menu" cat="'.$cat['cat_name'].'">'.$cat['cat_name'].'</a> </li><!---->';
+        foreach($cats as $cat_){
+          echo '<li  class="" style=""> <a href="javascript:void(0);" class="tools-link cat_menu" cat="'.$cat_['cat_name'].'">'.$cat_['cat_name'].'</a> </li><!---->';
         }
       }
     }
 
-    //Retrieve software by category
-function cats($cat, $conexion){
-  //var_dump($cat);die;
+function software_by_cat($cat, $conexion){
   $conexion = $conexion->conecta();
-  #$sql = "SELECT sw.sw_id, sw.sw_name, sw.date_of_instn, sw.sw_url, sw.sw_desc, b.cat_name, b.subcat_name FROM b_installed_sw AS sw INNER JOIN (SELECT c.cat_id, c.cat_name, s.subcat_id, s.subcat_name FROM b_sw_cats AS c INNER JOIN b_sw_cat_subcats AS a ON c.cat_id = a.cat_id INNER JOIN b_sw_subcats AS s ON a.subcat_id = s.subcat_id) AS b ON sw.cat_id = b.cat_id AND sw.subcat_id = b.subcat_id WHERE cat_name = :cat_name"; 
-  $sql = "SELECT lcn.*, svr.svr_name, svr.svr_addr, svr.svr_ip, svr.instns_to_access, svr.instns_to_req_acc, isw.* FROM `b_sw_inst_locn` as  lcn LEFT JOIN (SELECT   bsc.`cat_name`, bss.`subcat_name`, bis.`sw_name`, bis.`sw_url`, bsc.cat_id, bss.subcat_id, bis.sw_id, bis.sw_desc 
-  FROM `b_installed_sw` as bis 
-  INNER JOIN (`b_sw_cats` as bsc INNER JOIN `b_sw_cat_subcats` as bscs ON bsc.`cat_id` = bscs.`cat_id`) ON bis.`cat_id` = bsc.`cat_id` 
-  INNER JOIN (`b_sw_subcats` as bss INNER JOIN `b_sw_cat_subcats` as bscs1 ON bss.`subcat_id` = bscs1.`subcat_id`) ON bis.`subcat_id` = bss.`subcat_id` 
-  GROUP By bis.sw_name) as isw ON lcn.sw_id = isw.sw_id 
-  LEFT JOIN b_servers as svr on lcn.svr_id = svr.svr_id
-  WHERE  cat_name = :cat_name
-  ORDER BY isw.`cat_name`, isw.`subcat_name`";
+  $sql = "SELECT bis.sw_id, bis.sw_name, bsc.cat_name, bss.subcat_name FROM `b_installed_sw` as bis INNER JOIN `b_sw_cat` as bsc ON bis.`cat_id` = bsc.`cat_id` INNER JOIN `b_sw_subcat` as bss ON bis.`subcat_id` = bss.`subcat_id` WHERE cat_name = :cat_name ORDER BY bsc.`cat_name`, bss.`subcat_name`, bis.sw_name ASC";
   $stmt = $conexion->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
   $stmt->execute(array(':cat_name' => $cat));
   $results = $stmt->fetchAll();
@@ -208,9 +190,9 @@ function cats($cat, $conexion){
                 $(this).addClass("active");
               });*/
               $(".cat_menu").click(function(e){
-                e.preventDefault;
+                //e.preventDefault;
                 var $this = $(this);
-                /** alert($this.attr("cat"));/**/
+                /*alert($this.attr("cat"));/**/
                 var cat_name=$this.attr("cat");
                 /*alert(cat_name);*/
                 $(".sec-content").load("db_scripts/load-tools.php",{cat_name:cat_name}, function(response, status, xhr){
@@ -254,6 +236,11 @@ function cats($cat, $conexion){
           </body>
           </html> 
           ';
+        }
+
+        function esc_vals ($value){
+          //escape get values to protect from xss
+          return htmlspecialchars($value, ENT_QUOTES,'UTF-8');
         }
         
         function drawHeader($logopicture = NULL) {

@@ -15,8 +15,12 @@ License.
 require_once("rv-settings.php");
 $conexion = new Conexion();
 
-$bioafrica = $_GET['bioafrica'];
-$list =$_GET['list'];
+if(!$bioafrica = $_GET['bioafrica']){
+  $bioafrica = '';
+};
+if(!$list =$_GET['list']){
+  $list = "";
+};
 
 
 ### START OF webpage #########
@@ -25,7 +29,7 @@ openKeywords("KRISP, Kwazulu-Natal Research and Innovation Sequencing Platform, 
 openDescription("The Technology Innovation Agency (TIA) and UKZN have signed an agreement for the establishment of KRISP - the KwaZulu-Natal Research and Innovation Sequencing Platform. KRISP, the result of hard work by, among others, Professor Tulio de Oliveira, Professor Deresh Ramjugernath and Professor Salim Abdool Karim, was previously known as the Genomics and Bioinformatics Centre at UKZN, Nelson R Mandela School of Medicine, Durban, South Africa");
 
 ##Draw site header
-drawHeader($logopicture);
+drawHeader($logopicture="");
 
 ### START OLD BIOAFRICA.HTML#########
 ##Start content home
