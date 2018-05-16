@@ -1,0 +1,11 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "^6.0",
+        "php-di/php-di": "^6.0",
+        "monolog/monolog": "^1.23"
+    },
+
+    "autoload": {
+        "psr-4": {"Classes\\": "classes/"}
+    }
+}

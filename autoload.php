@@ -1,8 +1,4 @@
 <?php
-
-function __autoload($classname) {
-	require_once("classes/" . $classname . ".class.php");
-   
-}
-?>
+#autoload classes
+require __DIR__ . '/vendor/autoload.php';
 

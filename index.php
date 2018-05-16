@@ -13,6 +13,9 @@ License.
 ***************/
 
 require_once("rv-settings.php");
+
+use Classes\Conexion;
+
 $conexion = new Conexion();
 
 if(!$bioafrica = $_GET['bioafrica']){
